@@ -5,8 +5,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../dist/output.css" />
-    <script src="./index.js"></script>
+    <script defer src="./index.js"></script>
     <title>Hangman Game</title>
   </head>
-  <body></body>
+  <body class="bg-slate-300 w-full h-full">
+    <div
+      id="button-hidde-hangman"
+      class="flex flex-col justify-center items-center"
+    >
+      <a href="">
+        <input
+          id="start-button"
+          type="submit"
+          value="Start the Game"
+          class="text-2xl bg-cyan-500 shadow-lg shadow-cyan-500/50 px-5 py-4 rounded-lg hover:bg-sky-700 focus:pointer-events-auto"
+        />
+      </a>
+    </div>
+    <div id="button-show-hangman">
+      <canvas id="horca" width="1200" height="860"></canvas>
+      <div id="underlined"></div>
+    </div>
+  </body>
 </html>
