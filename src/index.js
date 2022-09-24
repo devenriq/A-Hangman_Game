@@ -27,9 +27,10 @@ const chooseSecretWord = () => {
 
 const checkLettersInserted = (key) => {
   let estado = false;
+  let charKey = key.charCodeAt(0);
   if (
-    (key >= 65 && letters.indexOf(key)) ||
-    (key <= 90 && letters.indexOf(key))
+    (charKey >= 65 && letters.indexOf(key)) ||
+    (charKey <= 90 && letters.indexOf(key))
   ) {
     letters.push(key);
     console.log(key);
@@ -42,7 +43,7 @@ const checkLettersInserted = (key) => {
 };
 
 const addIncorrectWord = () => {
-  mistakes = -1;
+  mistakes -= 1;
   console.log(mistakes);
 };
 
@@ -54,16 +55,19 @@ const startGame = () => (e) => {
   drawLine();
 
   document.onkeydown = (e) => {
-    let letter = e.key.toUpperCase();
-    if (checkLettersInserted(words) && secretWord.includes(words)) {
+    let downLetter = e.key;
+    let upperLetter = e.key.toUpperCase();
+    if (!checkLettersInserted(upperLetter) && secretWord.includes(downLetter)) {
       for (let i = 0; i < secretWord.length; i++) {
-        if (secretWord[i] === words) {
+        if (secretWord[i] === downLetter) {
           writeCorrectLetter(i);
+          console.log(secretWord[i]);
         }
       }
     } else {
-      addIncorrectWord(words);
-      writeIncorrectWord(words, mistakes);
+      addIncorrectWord();
+      writeIncorrectWord(upperLetter, mistakes);
+      console.log("second");
     }
   };
 };

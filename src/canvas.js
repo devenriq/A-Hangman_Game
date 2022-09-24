@@ -17,7 +17,7 @@ const drawLine = () => {
   board.lineWith = 6;
   board.lineCap = "round";
   board.lineJoin = "round";
-  board.fillStyle = "#cbd5e1";
+  board.fillStyle = "#F3F5F6";
   board.strokeStyle = "#8A3871";
 
   const width = 600 / secretWord.length;
@@ -34,18 +34,17 @@ const writeCorrectLetter = (index) => {
   board.lineWith = 6;
   board.lineCap = "round";
   board.lineJoin = "round";
-  board.fillStyle = "#cbd5e1";
-
+  board.fillStyle = "#F3F5F6";
   let anchura = 600 / secretWord.length;
   board.fillText(secretWord[index], 505 + anchura * index, 620);
   board.stroke();
 };
 
-const writeIncorrectWord = (word, errorsLeft) => {
+const writeIncorrectWord = (letter, errorsLeft) => {
   board.font = "bold 40px Inter";
   board.lineWith = 6;
   board.lineCap = "round";
   board.lineJoin = "round";
-  board.fillStyle = "#cbd5e1";
-  board.fillText(word, 535 + 40 * (10 - errorsLef), 710, 40);
+  board.fillStyle = "#F3F5F6";
+  board.fillText(letter, 535 + 40 * (10 - errorsLeft), 710, 40);
 };
