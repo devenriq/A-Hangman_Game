@@ -28,3 +28,24 @@ const drawLine = () => {
   board.stroke();
   board.closePath();
 };
+
+const writeCorrectLetter = (index) => {
+  board.font = "bold 53px Inter";
+  board.lineWith = 6;
+  board.lineCap = "round";
+  board.lineJoin = "round";
+  board.fillStyle = "#cbd5e1";
+
+  let anchura = 600 / secretWord.length;
+  board.fillText(secretWord[index], 505 + anchura * index, 620);
+  board.stroke();
+};
+
+const writeIncorrectWord = (word, errorsLeft) => {
+  board.font = "bold 40px Inter";
+  board.lineWith = 6;
+  board.lineCap = "round";
+  board.lineJoin = "round";
+  board.fillStyle = "#cbd5e1";
+  board.fillText(word, 535 + 40 * (10 - errorsLef), 710, 40);
+};

@@ -2,6 +2,7 @@ const startGameButton = document.querySelector("#start-button");
 const board = document.querySelector("#horca").getContext("2d");
 let secretWord = "";
 let letters = [];
+let mistakes = 8;
 
 let words = [
   "cuchara",
@@ -40,6 +41,11 @@ const checkLettersInserted = (key) => {
   }
 };
 
+const addIncorrectWord = () => {
+  mistakes = -1;
+  console.log(mistakes);
+};
+
 const startGame = () => (e) => {
   e.preventDefault();
   startGameButton.style.display = "none";
@@ -49,7 +55,16 @@ const startGame = () => (e) => {
 
   document.onkeydown = (e) => {
     let letter = e.key.toUpperCase();
-    checkLettersInserted(letter);
+    if (checkLettersInserted(words) && secretWord.includes(words)) {
+      for (let i = 0; i < secretWord.length; i++) {
+        if (secretWord[i] === words) {
+          writeCorrectLetter(i);
+        }
+      }
+    } else {
+      addIncorrectWord(words);
+      writeIncorrectWord(words, mistakes);
+    }
   };
 };
 
